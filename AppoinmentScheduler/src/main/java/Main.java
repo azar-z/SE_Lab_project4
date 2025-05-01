@@ -77,6 +77,13 @@ public class Main {
 
                 if (availableSlot.isPresent()) {
                     AvailableSlot slot = availableSlot.get();
+
+                    if (patient.type == PatientType.EMERGENCY) {
+                        slot.reserve(patient);
+                        System.out.println("نوبت اورژانسی برای " + patient.name + " با " + doctor.name + " در ساعت " + slot.start.format(DateTimeFormatter.ofPattern("yy/MM/dd HH:mm")) + " ثبت شد.");
+                        return AppointmentResult.APPROVED;
+                    }
+
                     slot.reserve(patient);
                     System.out.println("نوبت برای " + patient.name + " با " + doctor.name + " در ساعت " + slot.start.format(DateTimeFormatter.ofPattern("yy/MM/dd HH:mm")) + " ثبت شد.");
                     return AppointmentResult.APPROVED;
