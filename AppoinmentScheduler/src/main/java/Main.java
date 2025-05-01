@@ -1,7 +1,9 @@
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Main {
 
@@ -65,7 +67,22 @@ public class Main {
         }
 
         public AppointmentResult bookAppointment(Patient patient, String department, LocalDate desiredDay) {
-            return AppointmentResult.APPROVED;
+            for (Doctor doctor : doctors) {
+                if (!doctor.department.equals(department)) continue;
+
+                Optional<AvailableSlot> availableSlot = doctor.availableSlots.stream()
+                        .filter(slot -> !slot.isReserved()
+                                && slot.start.toLocalDate().equals(desiredDay))
+                        .findFirst();
+
+                if (availableSlot.isPresent()) {
+                    AvailableSlot slot = availableSlot.get();
+                    slot.reserve(patient);
+                    System.out.println("نوبت برای " + patient.name + " با " + doctor.name + " در ساعت " + slot.start.format(DateTimeFormatter.ofPattern("yy/MM/dd HH:mm")) + " ثبت شد.");
+                    return AppointmentResult.APPROVED;
+                }
+            }
+            return AppointmentResult.CANCELED;
         }
     }
 }
