@@ -62,6 +62,17 @@ public class Main {
     public static class Clinic {
         List<Doctor> doctors = new ArrayList<>();
 
+        public static void main(String[] args) {
+            Clinic clinic = new Clinic();
+            Doctor doctor = new Doctor("دکتر رضوی", "قلب");
+            doctor.addAvailableSlot(LocalDateTime.of(2023, 10, 10, 8, 0), LocalDateTime.of(2023, 10, 10, 12, 0));
+            clinic.addDoctor(doctor);
+            Patient patient = new Patient("علی محمدی", PatientType.NORMAL, InsuranceStatus.APPROVED);
+            LocalDate date = LocalDate.of(2023, 10, 10);
+            AppointmentResult result = clinic.bookAppointment(patient, "قلب", date);
+            System.out.println(result.name());
+        }
+
         public void addDoctor(Doctor doctor) {
             doctors.add(doctor);
         }
