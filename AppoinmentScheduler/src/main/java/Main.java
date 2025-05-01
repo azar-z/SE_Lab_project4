@@ -84,9 +84,12 @@ public class Main {
                         return AppointmentResult.APPROVED;
                     }
 
-                    slot.reserve(patient);
-                    System.out.println("نوبت برای " + patient.name + " با " + doctor.name + " در ساعت " + slot.start.format(DateTimeFormatter.ofPattern("yy/MM/dd HH:mm")) + " ثبت شد.");
-                    return AppointmentResult.APPROVED;
+                    if (patient.type == PatientType.NORMAL && patient.insuranceStatus == InsuranceStatus.APPROVED) {
+                        slot.reserve(patient);
+                        System.out.println("نوبت برای " + patient.name + " با " + doctor.name + " در ساعت " + slot.start.format(DateTimeFormatter.ofPattern("yy/MM/dd HH:mm")) + " ثبت شد.");
+                        return AppointmentResult.APPROVED;
+                    }
+                    return AppointmentResult.CANCELED;
                 }
             }
             return AppointmentResult.CANCELED;
