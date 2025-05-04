@@ -48,11 +48,11 @@
 قرار گرفته‌اند. پیاده‌سازی موفق تست‌های Cucmber را در تصویر زیر مشاهده می‌کنید.
 
 
-![cucmberPassedTests.PNG](img/cucmberPassedTests.PNG)
+![cucmberPassedTests.PNG](img/cucmberPassedTests.png)
 
 
 همچنین تست‌های Junit نیز در مسیر /src/test/java/TestBookAppointment.java پیاده‌سازی شده‌اند. در انتها، اجرای موفق هر ۸ تست (۴ مورد برای cucumber و ۴ مورد برای JUnit) در تصویر زیر دیده می‌شود.
 
 
-![overallPassedTests.PNG](img/overallPassedTests.PNG)
+![overallPassedTests.PNG](img/overallPassedTests.png)
 
