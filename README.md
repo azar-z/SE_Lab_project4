@@ -39,3 +39,20 @@
 
 تابع bookAppointment در این مدل شامل تمام منطق و قوانین کسب‌وکار می‌شود و به روش BDD تست شده است.
 
+### تست پروژه
+
+تست‌های مبتی بر cucumber در سه مسیر:
+- سناریو‌ها: /src/test/resources/features/book_appointment.feature
+- گام‌ها: /src/test/java/stepdefinitions/BookAppointmentSteps.java
+- اجرا: /src/test/java/RunCucumberTest.java
+قرار گرفته‌اند. پیاده‌سازی موفق تست‌های Cucmber را در تصویر زیر مشاهده می‌کنید.
+
+
+![cucmberPassedTests.PNG](img/cucmberPassedTests.PNG)
+
+
+همچنین تست‌های Junit نیز در مسیر /src/test/java/TestBookAppointment.java پیاده‌سازی شده‌اند. در انتها، اجرای موفق هر ۸ تست (۴ مورد برای cucumber و ۴ مورد برای JUnit) در تصویر زیر دیده می‌شود.
+
+
+![overallPassedTests.PNG](img/overallPassedTests.PNG)
+
